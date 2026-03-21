@@ -141,17 +141,17 @@ const Home = () => {
 
                 <div className="relative z-10 min-h-screen flex flex-col justify-center items-center">
                     {/* Hero text - centered container but left-aligned text */}
-                    <div className="max-w-2xl text-left -mt-32 md:mt-0">
+                    <div className="max-w-2xl text-center md:text-left mt-5 md:mt-0">
                         <h1
-                            className="text-3xl md:text-4xl lg:text-5xl leading-tight"
+                            className="text-4xl md:text-4xl lg:text-5xl leading-tight"
                             style={{ fontFamily: '"Regarn", serif' }}
                         >
-                            <span className="text-gray-400 bg-gray-100 text-4xl md:text-5xl lg:text-6xl" style={{ fontFamily: "ChiKareGo" }}>Hey!</span>
+                            <span className="text-gray-400 bg-gray-100 text-5xl md:text-5xl lg:text-6xl" style={{ fontFamily: "ChiKareGo" }}>Hey!</span>
                             {' '}
                             <span className="text-gray-900 font-bold">I'm <span className="italic">Aditi</span></span>
                         </h1>
                         <h2
-                            className="text-3xl md:text-4xl lg:text-5xl mt-1 leading-tight font-bold"
+                            className="text-4xl md:text-4xl lg:text-5xl mt-1 leading-tight font-bold"
                             style={{ fontFamily: '"Regarn", serif' }}
                         >
                             <span className="text-gray-900 me-3">Software</span>
@@ -161,17 +161,17 @@ const Home = () => {
                             </div>
                         </h2>
                         <h2
-                            className="text-3xl md:text-4xl lg:text-5xl mt-1 leading-tight font-bold"
+                            className="text-4xl md:text-4xl lg:text-5xl mt-1 leading-tight font-bold"
                             style={{ fontFamily: '"Regarn", serif' }}
                         >
                             {/* <span className="text-gray-900">based on </span> */}
                             <span className="relative inline-block">
-                                <span className="text-gray-900 font-medium text-4xl md:text-5xl lg:text-6xl" style={{ fontFamily: "ChiKareGo" }}>Engineer</span>
+                                <span className="text-gray-900 font-medium text-5xl md:text-5xl lg:text-6xl" style={{ fontFamily: "ChiKareGo" }}>Engineer</span>
                                 {/* <span className="absolute bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-full"></span> */}
                             </span>
                             <span className="text-gray-400">(</span>
                             <span className="relative inline-block">
-                                <span className="text-gray-900 font-medium text-4xl md:text-5xl lg:text-6xl" style={{ fontFamily: "ChiKareGo" }}>r</span>
+                                <span className="text-gray-900 font-medium text-5xl md:text-5xl lg:text-6xl" style={{ fontFamily: "ChiKareGo" }}>r</span>
                                 {/* <span className="absolute bottom-1 left-0 right-0 h-1 bg-blue-600 rounded-full"></span> */}
                             </span>
                             <span className="text-gray-400">)</span>
@@ -207,7 +207,7 @@ const Home = () => {
                         AI & Data Science
                     </p>
                 </div>
-                <div className="absolute bottom-[35vh] left-0 right-0 flex justify-center md:block md:bottom-[30vh] md:left-[12vw] md:right-auto" style={{ zIndex: 10 }}>
+                <div className="absolute flex justify-center md:block md:bottom-[30vh] md:left-[12vw] md:right-auto" style={{ zIndex: 10 }}>
                     <p
                         className="text-gray-600 text-sm md:text-right text-center leading-relaxed"
                         style={{ fontFamily: '"Outfit", sans-serif' }}
@@ -219,12 +219,12 @@ const Home = () => {
                 </div>
 
                 {/* AA Logo - Absolute positioned with shadow layers */}
-                <div className="absolute md:top-[30vh] top-[26vh] md:right-[40vw] right-[25vw]" style={{ zIndex: 10 }}>
+                <div className="absolute md:top-[30vh] top-[26vh] md:right-[40vw] right-[22vw]" style={{ zIndex: 10 }}>
                     <div className="relative">
                         <img
                             src={aalogo}
                             alt="AA Logo"
-                            className="relative md:w-16 w-12 h-auto rounded-[17px] shadow-lg"
+                            className="relative md:w-16 w-16 h-auto rounded-[17px] shadow-lg"
                         />
                     </div>
                 </div>
