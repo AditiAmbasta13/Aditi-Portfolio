@@ -20,7 +20,7 @@ import colabIcon from '../assets/images/skills-logos/colab.png';
 import sqlIcon from '../assets/images/skills-logos/sql.png';
 import firebaseIcon from '../assets/images/skills-logos/firebase.png';
 import AIIcon from '../assets/images/skills-logos/AI.png';
-import MLIcon from '../assets/images/skills-logos/ml.png';
+import MLIcon from '../assets/images/skills-logos/ML.png';
 import MongoIcon from '../assets/images/skills-logos/mongo.png';
 import CppIcon from '../assets/images/skills-logos/cpp.png';
 import CanvaIcon from '../assets/images/skills-logos/canva.png';
