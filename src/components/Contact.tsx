@@ -114,10 +114,10 @@ const Contact = () => {
 
                 {/* Mobile-only social icons — centered single row */}
                 <div className="flex md:hidden items-center justify-center gap-6 mt-8 w-full pb-10">
-                    <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://www.linkedin.com/in/aditi-ambasta-9581b4288" target="_blank" rel="noopener noreferrer">
                         <img src={linkedinIcon} alt="LinkedIn" className="w-12 h-12 rounded-xl shadow-sm object-contain" />
                     </a>
-                    <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+                    <a href="https://github.com/AditiAmbasta13" target="_blank" rel="noopener noreferrer">
                         <img src={githubIcon} alt="GitHub" className="w-12 h-12 rounded-xl shadow-sm object-contain" />
                     </a>
                     <a href="mailto:ambasta.aditi@gmail.com">
@@ -175,7 +175,7 @@ const Contact = () => {
                 <div className="absolute inset-0 pointer-events-auto">
                     {/* LinkedIn */}
                     <a
-                        href="https://linkedin.com"
+                        href="https://www.linkedin.com/in/aditi-ambasta-9581b4288"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="absolute group"
@@ -188,7 +188,7 @@ const Contact = () => {
 
                     {/* GitHub */}
                     <a
-                        href="https://github.com"
+                        href="https://github.com/AditiAmbasta13"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="absolute group"
