@@ -53,7 +53,7 @@ const AnimatedHeroLines = () => {
         return (
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 910 1410"
+                viewBox="0 0 850 1350"
                 preserveAspectRatio="xMidYMid meet"
                 className="w-full h-full"
             >
@@ -66,7 +66,7 @@ const AnimatedHeroLines = () => {
                         <stop offset="100%" stopColor="transparent" />
                     </linearGradient>
                 </defs>
-                <g>
+                <g transform="translate(60, 0)">
                     {/* Base gray path */}
                     <path
                         ref={pathRef}
