@@ -274,7 +274,6 @@ const ShufflingImageStack = ({ images }: { images: string[] }) => {
 
 const About = () => {
     const { ref: heroRef, visible: heroVisible } = useVisible(0.1);
-    const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
     // const { ref: storyRef, visible: storyVisible } = useVisible();
     // const { ref: educationRef, visible: educationVisible } = useVisible();
     // const { ref: passionRef, visible: passionVisible } = useVisible();
@@ -478,22 +477,13 @@ const About = () => {
                 <div
                     className="flex w-max gap-6"
                     style={{
-                        animation: 'scroll-left 55s linear infinite',
+                        animation: 'scroll-left 35s linear infinite',
                         willChange: 'transform',
                         backfaceVisibility: 'hidden',
+                        transform: 'translateZ(0)',
                     }}
-                    onMouseEnter={e => {
-                        const target = e.currentTarget;
-                        scrollTimeoutRef.current = setTimeout(() => {
-                            target.style.animationPlayState = 'paused';
-                        }, 5000);
-                    }}
-                    onMouseLeave={e => {
-                        if (scrollTimeoutRef.current) {
-                            clearTimeout(scrollTimeoutRef.current);
-                        }
-                        e.currentTarget.style.animationPlayState = 'running';
-                    }}
+                    onMouseEnter={e => (e.currentTarget.style.animationPlayState = 'paused')}
+                    onMouseLeave={e => (e.currentTarget.style.animationPlayState = 'running')}
                 >
                     {/* Render images twice for seamless loop */}
                     {[...achievements, ...achievements].map((ach, i) => (
