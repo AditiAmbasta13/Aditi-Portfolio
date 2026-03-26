@@ -96,7 +96,7 @@ const Contact = () => {
                             Projects
                         </div>
                     </div>
-                    <div className="flex flex-col gap-2">
+                    <div className="flex flex-col gap-2 -mt-2 md:mt-0">
                         <div onClick={() => navigateToSection('/about', 'achievements')} className="mb-2 flex items-center gap-2 text-gray-600 hover:text-blue-600 transition-colors duration-200 text-sm md:text-base font-light cursor-pointer" style={{ fontFamily: 'Outfit, sans-serif' }}>
                             <span className="w-1.5 h-1.5 rounded-full bg-blue-500 shrink-0" />
                             Achievements

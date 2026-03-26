@@ -141,7 +141,7 @@ const Home = () => {
 
                 <div className="relative z-10 min-h-screen flex flex-col justify-center items-center">
                     {/* Hero text - centered container but left-aligned text */}
-                    <div className="max-w-2xl text-center md:text-left mt-5 md:mt-0">
+                    <div className="max-w-2xl text-center md:text-left -mt-3 md:mt-0">
                         <h1
                             className="text-4xl md:text-4xl lg:text-5xl leading-tight"
                             style={{ fontFamily: '"Regarn", serif' }}
@@ -197,6 +197,16 @@ const Home = () => {
                     </a>
                 </div>
 
+                {/* mobile only */}
+                <div className="absolute md:hidden bottom-60 right-1/2 translate-x-1/2" style={{ zIndex: 10 }}>
+                    <p
+                        className="bg-[#fafafa] text-gray-600 text-sm text-center whitespace-nowrap"
+                        style={{ fontFamily: '"Outfit", sans-serif' }}
+                    >
+                        focused on learning every single day<br />
+                        Improving consistently, one step at a time.
+                    </p>
+                </div>
                 {/* Studying BTech Text - Absolute positioned */}
                 <div className="absolute md:bottom-[33vh] md:right-[18vw]" style={{ zIndex: 10 }}>
                     <p
@@ -207,7 +217,7 @@ const Home = () => {
                         AI & Data Science
                     </p>
                 </div>
-                <div className="absolute flex justify-center md:block md:bottom-[30vh] md:left-[12vw] md:right-auto" style={{ zIndex: 10 }}>
+                <div className="absolute flex justify-center md:block md:bottom-[25vh] md:left-[12.5vw] md:right-auto" style={{ zIndex: 10 }}>
                     <p
                         className="text-gray-600 text-sm md:text-right text-center leading-relaxed"
                         style={{ fontFamily: '"Outfit", sans-serif' }}
@@ -219,12 +229,12 @@ const Home = () => {
                 </div>
 
                 {/* AA Logo - Absolute positioned with shadow layers */}
-                <div className="absolute md:top-[30vh] top-[26vh] md:right-[40vw] right-[22vw]" style={{ zIndex: 10 }}>
+                <div className="absolute md:top-[30vh] top-[26vh] md:right-[40vw] right-[25vw]" style={{ zIndex: 10 }}>
                     <div className="relative">
                         <img
                             src={aalogo}
                             alt="AA Logo"
-                            className="relative md:w-16 w-16 h-auto rounded-[17px] shadow-lg"
+                            className="relative md:w-16 w-12 h-auto rounded-[17px] shadow-lg"
                         />
                     </div>
                 </div>
@@ -259,7 +269,7 @@ const Home = () => {
                 </div>
 
                 {/* Mobile-only static icon grid */}
-                <div className="md:hidden w-full px-6 py-16" id="techstack">
+                <div className="md:hidden w-full px-6 py-28" id="techstack">
                     <div className="text-center mb-10">
                         <h2
                             className="md:text-4xl text-3xl scale-y-110 font-regular text-gray-900"
@@ -289,7 +299,7 @@ const Home = () => {
                             { name: 'Mongo/Firebase', src: MongoIcon },
                             { name: 'AI & Agents', src: AIIcon },
                             { name: 'ML + DL', src: DLIcon },
-                            { name: 'FIgma/Canva', src: CppIcon },
+                            { name: 'FIgma/Canva', src: javaIcon },
                             { name: 'Power BI', src: powerbiIcon },
                         ].map(({ name, src }) => (
                             <div key={name} className="flex flex-col items-center gap-2">

@@ -30,7 +30,7 @@ const textureLoader = new TextureLoader();
 const textureCache = new Map<string, THREE.Texture>();
 const allIconImages = [
     figmaIcon, reactIcon, nodeIcon, colabIcon, sqlIcon, firebaseIcon,
-    AIIcon, MLIcon, MongoIcon, CppIcon, powerbiIcon, CanvaIcon, javaIcon, postmanIcon, angularIcon, DLIcon
+    AIIcon, MLIcon, MongoIcon, javaIcon, powerbiIcon, CanvaIcon, javaIcon, postmanIcon, angularIcon, DLIcon
 ];
 
 // Pre-load all textures with proper async callbacks
@@ -394,7 +394,7 @@ const Scene = ({ scrollProgress, initialScrollProgress }: SceneProps) => {
             { image: DLIcon, row: 1, col: 1, name: 'ML + DL' },
             { image: MongoIcon, row: 1, col: 3, name: 'Mongo/Firebase' },
             { image: powerbiIcon, row: 1, col: 4, name: 'Power BI' },
-            { image: CppIcon, row: 1, col: 5, name: 'Figma/Canva' },
+            { image: javaIcon, row: 1, col: 5, name: 'Figma/Canva' },
         ];
 
         return icons.map((icon, index) => {
@@ -470,7 +470,7 @@ const Scene = ({ scrollProgress, initialScrollProgress }: SceneProps) => {
         map.set(AIIcon, textureCache.get(AIIcon)!);
         map.set(MLIcon, textureCache.get(MLIcon)!);
         map.set(MongoIcon, textureCache.get(MongoIcon)!);
-        map.set(CppIcon, textureCache.get(CppIcon)!);
+        map.set(CppIcon, textureCache.get(javaIcon)!);
         map.set(powerbiIcon, textureCache.get(powerbiIcon)!);
         map.set(CanvaIcon, textureCache.get(CanvaIcon)!);
         map.set(javaIcon, textureCache.get(javaIcon)!);
