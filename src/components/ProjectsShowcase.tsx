@@ -148,7 +148,7 @@ const ProjectsShowcase = () => {
                                             className="absolute inset-0 flex items-center gap-2 justify-center text-gray-700 font-semibold text-sm pointer-events-none"
                                             style={{ fontFamily: '"Outfit", serif' }}
                                         >
-                                            <PptIcon /> Slides
+                                            <PptIcon /> Case Study
                                         </span>
                                     </a>
                                 </div>
@@ -294,7 +294,7 @@ const ProjectsShowcase = () => {
                                             className="absolute inset-0 flex items-center gap-2 justify-center text-gray-700 font-semibold text-sm pointer-events-none"
                                             style={{ fontFamily: '"Outfit", serif' }}
                                         >
-                                            <PptIcon /> Slides
+                                            <PptIcon /> Case Study
                                         </span>
                                     </a>
                                 </div>
@@ -372,7 +372,7 @@ const ProjectsShowcase = () => {
                                             className="absolute inset-0 flex items-center gap-2 justify-center text-gray-700 font-semibold text-sm pointer-events-none"
                                             style={{ fontFamily: '"Outfit", serif' }}
                                         >
-                                            <PptIcon /> Slides
+                                            <PptIcon /> Case Study
                                         </span>
                                     </a>
                                 </div>
@@ -455,7 +455,7 @@ const ProjectsShowcase = () => {
                                             className="absolute inset-0 flex items-center gap-2 justify-center text-gray-700 font-semibold text-sm pointer-events-none"
                                             style={{ fontFamily: '"Outfit", serif' }}
                                         >
-                                            <PptIcon /> Slides
+                                            <PptIcon /> Case Study
                                         </span>
                                     </a>
                                 </div>
