@@ -68,10 +68,14 @@ const Education = () => {
 
             setHeaderVisible(containerTop < window.innerHeight * 0.7);
 
-            if (containerTop <= 0 && containerTop >= -totalScrollDistance) {
-                const progress = Math.abs(containerTop) / totalScrollDistance;
+            // Start internal scroll when section is 20% into the viewport from below
+            const earlyTrigger = window.innerHeight * 0.3;
+            const adjustedTop = containerTop - earlyTrigger;
+
+            if (adjustedTop <= 0 && adjustedTop >= -totalScrollDistance) {
+                const progress = Math.abs(adjustedTop) / totalScrollDistance;
                 setScrollProgress(Math.min(1, Math.max(0, progress)));
-            } else if (containerTop > 0) {
+            } else if (adjustedTop > 0) {
                 setScrollProgress(0);
             } else {
                 setScrollProgress(1);
@@ -111,6 +115,7 @@ const Education = () => {
 
     return (
         <div
+            id="section-education"
             ref={containerRef}
             style={{ height: `${totalScrollDistance + window.innerHeight}px` }}
         >
@@ -185,8 +190,8 @@ const Education = () => {
                                 <div className="flex flex-col justify-center ps-6 md:ps-0 pe-6 md:pe-64 py-2 md:py-4 overflow-hidden">
                                     {/* Period badge */}
                                     <span
-                                        className="inline-block w-fit px-3 py-1 text-xs font-outfit font-medium text-blue-600 bg-violet-950 rounded-full mb-2"
-                                        style={{ opacity: 1 - collapseProgress * 0.5 }}
+                                        className="inline-block w-fit px-3 py-1 text-xs font-outfit font-medium text-blue-600 bg-gray-900 rounded-full mb-2"
+
                                     >
                                         {item.period}
                                     </span>

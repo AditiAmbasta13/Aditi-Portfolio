@@ -274,9 +274,21 @@ const ShufflingImageStack = ({ images }: { images: string[] }) => {
 
 const About = () => {
     const { ref: heroRef, visible: heroVisible } = useVisible(0.1);
-    // const { ref: storyRef, visible: storyVisible } = useVisible();
-    // const { ref: educationRef, visible: educationVisible } = useVisible();
-    // const { ref: passionRef, visible: passionVisible } = useVisible();
+    const [artboardScale, setArtboardScale] = useState(1);
+    const ARTBOARD_W = 1440;
+    const ARTBOARD_H = 900;
+
+    useEffect(() => {
+        const update = () => {
+            setArtboardScale(Math.min(
+                window.innerWidth / ARTBOARD_W,
+                window.innerHeight / ARTBOARD_H,
+            ));
+        };
+        update();
+        window.addEventListener('resize', update);
+        return () => window.removeEventListener('resize', update);
+    }, []);
 
     return (
         <div className="relative min-h-screen bg-[#fafafa]">
@@ -298,17 +310,29 @@ const About = () => {
 
             {/* ─── Hero Section ─── */}
             <div className="relative min-h-screen overflow-hidden" ref={heroRef}>
-                <div className="relative z-10 min-h-screen flex items-center">
-                    <div className="max-w-7xl w-full mx-auto px-8 flex flex-col md:flex-row items-center">
+                <div className="relative z-10 min-h-screen flex items-center justify-center">
 
-                        <div className="absolute top-[5vh] right-[5vw]" style={{ zIndex: 10 }}>
+                    {/* ── DESKTOP ARTBOARD ────────────────────────────────────────────────── */}
+                    <div
+                        className="hidden md:block absolute pointer-events-none"
+                        style={{
+                            width: `${ARTBOARD_W}px`,
+                            height: `${ARTBOARD_H}px`,
+                            top: '50%',
+                            left: '50%',
+                            transform: `translate(-50%, -50%) scale(${artboardScale})`,
+                            transformOrigin: 'center center',
+                        }}
+                    >
+                        {/* Title  |  top:5vh->45  right:5vw->72 */}
+                        <div className="absolute pointer-events-auto" style={{ top: 55, right: 0, zIndex: 10 }}>
                             <h2
-                                className="md:text-4xl text-3xl scale-y-110 font-regular text-gray-900"
+                                className="text-5xl scale-y-110 font-regular text-gray-900"
                                 style={{ fontFamily: 'Regarn, serif' }}
                             >
                                 <span className="italic">About</span>
                                 <span
-                                    className="text-blue-600 md:text-5xl text-4xl ms-3"
+                                    className="text-blue-600 text-6xl ms-3"
                                     style={{ fontFamily: 'ChiKareGo' }}
                                 >
                                     Me
@@ -316,138 +340,152 @@ const About = () => {
                             </h2>
                         </div>
 
-                        {/* ── Desktop: Left text (absolute positioned) ── */}
-                        <div className="hidden md:block w-full md:w-[45%] text-left -me-8">
+                        {/* Left Text Zone (using original viewport-relative percentages adjusted for the 1440x900 artboard) */}
+                        <div className="absolute pointer-events-auto text-left -me-8" style={{ top: 0, left: 0, width: '59%', height: '100%', zIndex: 10 }}>
                             <p
-                                className="absolute top-[21vh] left-[26vw] text-gray-600 text-base md:text-md mt-4 max-w-md font-regular leading-relaxed"
+                                className="absolute top-[21%] left-[26%] text-gray-600 text-base md:text-xl mt-4 max-w-lg font-regular leading-relaxed"
                                 style={{ fontFamily: '"Outfit", sans-serif', ...stagger(heroVisible, 5) }}
                             >
-                                <span className="text-gray-400 bg-gray-100 text-md md:text-4xl" style={{ fontFamily: "ChiKareGo" }}>Hi, I'm Aditi</span> — part developer, part problem solver, and occasionally a professional debugger of my own mistakes.
+                                <span className="text-gray-400 bg-gray-100 text-md md:text-5xl" style={{ fontFamily: "ChiKareGo" }}>Hi, I'm Aditi</span> — part developer, part problem solver, and occasionally a professional debugger of my own mistakes.
                             </p>
                             <p
-                                className="absolute top-[33vh] left-[26vw] text-gray-600 text-base md:text-md mt-4 max-w-md font-regular leading-relaxed"
+                                className="absolute top-[33%] left-[26%] text-gray-600 text-base md:text-xl mt-6 max-w-lg font-regular leading-relaxed"
                                 style={{ fontFamily: '"Outfit", sans-serif', ...stagger(heroVisible, 5) }}
                             >
                                 I work across the stack, building responsive frontends, developing backend systems, and working with machine learning and Agentic AI to design intelligent, autonomous applications.
                             </p>
                             <p
-                                className="absolute top-[50vh] left-[17vw] text-gray-600 text-base md:text-md mt-4 max-w-md font-regular leading-relaxed"
+                                className="absolute top-[52%] left-[15%] text-gray-600 text-base md:text-xl mt-4 max-w-lg font-regular leading-relaxed"
                                 style={{ fontFamily: '"Outfit", sans-serif', ...stagger(heroVisible, 5) }}
                             >
                                 I enjoy solving problems, learning new technologies, and turning complex ideas into real, working products.
                             </p>
                             <p
-                                className="absolute top-[60vh] left-[17vw] text-gray-600 text-base md:text-md mt-4 max-w-md font-regular leading-relaxed"
+                                className="absolute top-[60%] left-[15%] text-gray-600 text-base md:text-xl mt-4 max-w-lg font-regular leading-relaxed"
                                 style={{ fontFamily: '"Outfit", sans-serif', ...stagger(heroVisible, 5) }}
                             >
                                 Outside of tech, I enjoy sketching, cycling, and sometimes going down deep rabbit holes trying to fix one tiny bug.
                             </p>
                         </div>
 
-                        {/* ── Mobile: Stacked layout (text → image → button, SVG behind) ── */}
-                        <div className="md:hidden flex flex-col items-center w-full mt-20 relative">
-                            {/* Text — centered */}
-                            <div className="text-center px-6 mb-8" style={stagger(heroVisible, 1)}>
-                                <p
-                                    className="text-gray-600 text-sm mt-3 font-regular leading-relaxed"
-                                    style={{ fontFamily: '"Outfit", sans-serif' }}
-                                >
-                                    <span className="text-gray-400 bg-gray-100 text-2xl" style={{ fontFamily: "ChiKareGo" }}>Hi, I'm Aditi</span> — part developer, part problem solver, and occasionally a professional debugger of my own mistakes.
-                                </p>
-                                <p
-                                    className="text-gray-600 text-sm mt-3 font-regular leading-relaxed"
-                                    style={{ fontFamily: '"Outfit", sans-serif' }}
-                                >
-                                    I work across the stack, building responsive frontends, developing backend systems, and working with machine learning and Agentic AI to design intelligent, autonomous applications.
-                                </p>
-                                <p
-                                    className="text-gray-600 text-sm mt-3 font-regular leading-relaxed"
-                                    style={{ fontFamily: '"Outfit", sans-serif' }}
-                                >
-                                    I enjoy solving problems, learning new technologies, and turning complex ideas into real, working products.
-                                </p>
-                                <p
-                                    className="text-gray-600 text-sm mt-3 font-regular leading-relaxed"
-                                    style={{ fontFamily: '"Outfit", sans-serif' }}
-                                >
-                                    Outside of tech, I enjoy sketching, cycling, and sometimes going down deep rabbit holes trying to fix one tiny bug.
-                                </p>
-                            </div>
-
-                            {/* Image + SVG behind + button */}
-                            <div className="relative w-full flex flex-col items-center">
-                                {/* SVG lines behind */}
-                                <div className="absolute -top-97 flex items-center justify-center pointer-events-none" aria-hidden="true">
-                                    <div className="w-[100%] h-full">
-                                        <AboutHeroLines />
-                                    </div>
-                                </div>
-
-                                {/* Profile image */}
-                                <div className="relative z-10" style={stagger(heroVisible, 2)}>
-                                    <img
-                                        src={aditiPic}
-                                        alt="Aditi"
-                                        className="w-36 h-48 rounded-lg object-cover shadow-xl"
-                                    />
-                                </div>
-
-                                {/* Connect button — smaller, centered */}
-                                <div className="relative z-10 mt-6" style={stagger(heroVisible, 3)}>
-                                    <a href="#contact" className="relative inline-block group cursor-pointer">
-                                        <img
-                                            src={connectButton}
-                                            alt="Connect"
-                                            className="w-28 h-auto rounded-[17px] shadow-lg transition-transform duration-300 group-hover:scale-105"
-                                        />
-                                        <span
-                                            className="absolute inset-0 flex items-center justify-center text-gray-700 font-semibold text-xs"
-                                            style={{ fontFamily: '"Outfit", serif' }}
-                                        >
-                                            Let's Connect
-                                        </span>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* ── Desktop: Right side — SVG with image overlaid ── */}
-                        <div className="hidden md:block w-full md:w-[55%] relative" style={stagger(heroVisible, 1)}>
+                        {/* Right Area - SVG, Image, Connect Button */}
+                        <div className="absolute top-36 right-10 h-full pointer-events-auto" style={{ width: '55%', zIndex: 10, ...stagger(heroVisible, 1) }}>
                             {/* Animated Hero Lines SVG */}
-                            <div className="w-[75%] ml-24 mt-10">
+                            <div className="absolute pointer-events-none" style={{ width: '75%', left: 96, top: 40 }}>
                                 <AboutHeroLines />
                             </div>
 
-                            {/* Connect Button - Absolute positioned */}
-                            <div className="absolute bottom-[17vh] right-[25vw] rounded-[17px]" style={{ zIndex: 10 }}>
+                            {/* Profile Image — absolute on top of SVG */}
+                            <div
+                                className="absolute"
+                                style={{ top: '9%', left: '30%', transform: 'translate(-50%, -50%)', ...stagger(heroVisible, 2) }}
+                            >
+                                <div className="relative">
+                                    <img
+                                        src={aditiPic}
+                                        alt="Aditi"
+                                        className="w-60 h-80 rounded-lg object-cover shadow-xl"
+                                    />
+                                </div>
+                            </div>
+
+                            {/* Connect Button */}
+                            <div className="absolute rounded-[17px]" style={{ bottom: 390, right: 460, zIndex: 10 }}>
                                 <a href="#contact" className="relative inline-block group cursor-pointer">
                                     <img
                                         src={connectButton}
                                         alt="Connect"
-                                        className="w-36 h-auto rounded-[17px] shadow-lg transition-transform duration-300 group-hover:scale-105"
+                                        className="w-40 h-auto rounded-[19px] shadow-lg transition-transform duration-300 group-hover:scale-105"
                                     />
                                     <span
-                                        className="absolute inset-0 flex items-center justify-center text-gray-700 font-semibold text-sm"
+                                        className="absolute inset-0 flex items-center justify-center text-gray-700 font-semibold text-md"
                                         style={{ fontFamily: '"Outfit", serif' }}
                                     >
                                         Let's Connect
                                     </span>
                                 </a>
                             </div>
+                        </div>
+                    </div>
 
-                            {/* Profile Image — absolute on top of SVG */}
-                            <div
-                                className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2"
-                                style={stagger(heroVisible, 2)}
+                    {/* ── MOBILE LAYOUT ───────────────────────────────────────────────────── */}
+                    <div className="md:hidden flex flex-col items-center w-full mt-20 relative">
+                        {/* Title Mobile */}
+                        <div className="absolute top-[-60px] right-6" style={{ zIndex: 10 }}>
+                            <h2
+                                className="text-3xl scale-y-110 font-regular text-gray-900"
+                                style={{ fontFamily: 'Regarn, serif' }}
                             >
-                                <div className="relative">
-                                    {/* Image */}
-                                    <img
-                                        src={aditiPic}
-                                        alt="Aditi"
-                                        className="w-44 h-60 rounded-lg object-cover shadow-xl"
-                                    />
+                                <span className="italic">About</span>
+                                <span
+                                    className="text-blue-600 text-4xl ms-3"
+                                    style={{ fontFamily: 'ChiKareGo' }}
+                                >
+                                    Me
+                                </span>
+                            </h2>
+                        </div>
+                        {/* Text — centered */}
+                        <div className="text-center px-6 mb-8" style={stagger(heroVisible, 1)}>
+                            <p
+                                className="text-gray-600 text-sm mt-3 font-regular leading-relaxed"
+                                style={{ fontFamily: '"Outfit", sans-serif' }}
+                            >
+                                <span className="text-gray-400 bg-gray-100 text-2xl" style={{ fontFamily: "ChiKareGo" }}>Hi, I'm Aditi</span> — part developer, part problem solver, and occasionally a professional debugger of my own mistakes.
+                            </p>
+                            <p
+                                className="text-gray-600 text-sm mt-3 font-regular leading-relaxed"
+                                style={{ fontFamily: '"Outfit", sans-serif' }}
+                            >
+                                I work across the stack, building responsive frontends, developing backend systems, and working with machine learning and Agentic AI to design intelligent, autonomous applications.
+                            </p>
+                            <p
+                                className="text-gray-600 text-sm mt-3 font-regular leading-relaxed"
+                                style={{ fontFamily: '"Outfit", sans-serif' }}
+                            >
+                                I enjoy solving problems, learning new technologies, and turning complex ideas into real, working products.
+                            </p>
+                            <p
+                                className="text-gray-600 text-sm mt-3 font-regular leading-relaxed"
+                                style={{ fontFamily: '"Outfit", sans-serif' }}
+                            >
+                                Outside of tech, I enjoy sketching, cycling, and sometimes going down deep rabbit holes trying to fix one tiny bug.
+                            </p>
+                        </div>
+
+                        {/* Image + SVG behind + button */}
+                        <div className="relative w-full flex flex-col items-center">
+                            {/* SVG lines behind */}
+                            <div className="absolute -top-97 flex items-center justify-center pointer-events-none" aria-hidden="true">
+                                <div className="w-[100%] h-full">
+                                    <AboutHeroLines />
                                 </div>
+                            </div>
+
+                            {/* Profile image */}
+                            <div className="relative z-10" style={stagger(heroVisible, 2)}>
+                                <img
+                                    src={aditiPic}
+                                    alt="Aditi"
+                                    className="w-36 h-48 rounded-lg object-cover shadow-xl"
+                                />
+                            </div>
+
+                            {/* Connect button — smaller, centered */}
+                            <div className="relative z-10 mt-6" style={stagger(heroVisible, 3)}>
+                                <a href="#contact" className="relative inline-block group cursor-pointer">
+                                    <img
+                                        src={connectButton}
+                                        alt="Connect"
+                                        className="w-28 h-auto rounded-[17px] shadow-lg transition-transform duration-300 group-hover:scale-105"
+                                    />
+                                    <span
+                                        className="absolute inset-0 flex items-center justify-center text-gray-700 font-semibold text-xs"
+                                        style={{ fontFamily: '"Outfit", serif' }}
+                                    >
+                                        Let's Connect
+                                    </span>
+                                </a>
                             </div>
                         </div>
                     </div>

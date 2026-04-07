@@ -65,12 +65,12 @@ const Contact = () => {
                 {/* Animated title */}
                 <div>
                     <h2
-                        className="text-3xl md:text-4xl scale-y-110 font-regular text-gray-900"
+                        className="text-3xl scale-y-110 font-regular text-gray-900"
                         style={{ fontFamily: 'Regarn, serif' }}
                     >
                         <span className="italic">Contact </span>
                         <span
-                            className="text-blue-600 text-4xl md:text-5xl ms-2"
+                            className="text-blue-600 text-4xl ms-1"
                             style={{ fontFamily: 'ChiKareGo' }}
                         >
                             Me
@@ -182,7 +182,7 @@ const Contact = () => {
                         style={{ top: '22%', right: '20%' }}
                     >
                         <div className="rounded-xl flex items-center justify-center shadow-lg">
-                            <img src={linkedinIcon} alt="LinkedIn" className="w-12 h-12 rounded-xl shadow-sm object-contain" />
+                            <img src={linkedinIcon} alt="LinkedIn" className="w-11 h-11 rounded-xl shadow-sm object-contain" />
                         </div>
                     </a>
 
@@ -195,7 +195,7 @@ const Contact = () => {
                         style={{ top: '52%', right: '40%' }}
                     >
                         <div className="rounded-xl flex items-center justify-center shadow-lg">
-                            <img src={githubIcon} alt="GitHub" className="w-12 h-12 rounded-xl shadow-sm object-contain" />
+                            <img src={githubIcon} alt="GitHub" className="w-11 h-11 rounded-xl shadow-sm object-contain" />
                         </div>
                     </a>
 
@@ -206,7 +206,7 @@ const Contact = () => {
                         style={{ top: '36%', right: '65%' }}
                     >
                         <div className="rounded-xl flex items-center justify-center shadow-lg">
-                            <img src={emailIcon} alt="Email" className="w-12 h-12 rounded-xl shadow-sm object-contain" />
+                            <img src={emailIcon} alt="Email" className="w-11 h-11 rounded-xl shadow-sm object-contain" />
                         </div>
                     </a>
                 </div>

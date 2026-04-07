@@ -10,6 +10,7 @@ const Navbar = ({ activeSection = 'home' }: NavbarProps) => {
     const [isCollapsed, setIsCollapsed] = useState(false);
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isDarkBg, setIsDarkBg] = useState(false);
 
     const location = useLocation();
     const isAboutPage = location.pathname === '/about';
@@ -32,6 +33,24 @@ const Navbar = ({ activeSection = 'home' }: NavbarProps) => {
             const shouldCollapse = window.scrollY > heroHeight * 0.8;
             setIsCollapsed(shouldCollapse);
             if (!shouldCollapse) setIsDropdownOpen(false);
+
+            // Check if we are over a dark section
+            const workSection = document.getElementById('section-work');
+            const eduSection = document.getElementById('section-education');
+            
+            let isDark = false;
+            const navOffset = 50; // Approximating the visual center of the navbar
+
+            if (workSection) {
+                const rect = workSection.getBoundingClientRect();
+                if (rect.top <= navOffset && rect.bottom >= navOffset) isDark = true;
+            }
+            if (eduSection) {
+                const rect = eduSection.getBoundingClientRect();
+                if (rect.top <= navOffset && rect.bottom >= navOffset) isDark = true;
+            }
+            
+            setIsDarkBg(isDark);
         };
 
         window.addEventListener('scroll', handleScroll);
@@ -88,13 +107,13 @@ const Navbar = ({ activeSection = 'home' }: NavbarProps) => {
         const inner = (
             <>
                 <span
-                    className={`text-sm font-medium tracking-wide transition-colors duration-200 ${isActive ? 'text-blue-600' : isHovered ? 'text-blue-600' : 'text-gray-900'
+                    className={`text-sm font-medium tracking-wide transition-colors duration-200 ${isActive ? 'text-blue-600' : isHovered ? 'text-blue-600' : (isDarkBg && isInDropdown ? 'text-white' : 'text-gray-900')
                         }`}
                 >
                     {item.label}
                 </span>
                 <span
-                    className={`absolute right-0 h-[1px] rounded-r-full transition-colors duration-200 ${isHovered || isActive ? 'bg-blue-600' : 'bg-gray-900'
+                    className={`absolute right-0 h-[1px] rounded-r-full transition-colors duration-200 ${isHovered || isActive ? 'bg-blue-600' : (isDarkBg && isInDropdown ? 'bg-white' : 'bg-gray-900')
                         }`}
                     style={{ bottom: '-6px', left: '-64px' }}
                 />

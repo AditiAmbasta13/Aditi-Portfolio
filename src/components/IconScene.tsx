@@ -373,9 +373,10 @@ const IconMesh = ({ data, scrollProgress, texture, initialScrollProgress }: Icon
 interface SceneProps {
     scrollProgress: number;
     initialScrollProgress: number;
+    artboardScale: number;
 }
 
-const Scene = ({ scrollProgress, initialScrollProgress }: SceneProps) => {
+const Scene = ({ scrollProgress, initialScrollProgress, artboardScale }: SceneProps) => {
     const { camera } = useThree();
 
     // Define all 12 icons with positions
@@ -406,12 +407,12 @@ const Scene = ({ scrollProgress, initialScrollProgress }: SceneProps) => {
                 // Row 1: Positioned inline with hero description text (lowered to match text)
                 // Y values lowered to be at description text level (-0.5 to -2)
                 const inlinePositions = [
-                    { x: 8.9, y: 1 },   // Figma - after "products"
-                    { x: -7, y: 2.5 },    // React - after "React interface"  
-                    { x: -1.3, y: 4.4 },    // Node - after "Node.js backend"
-                    { x: 5.4, y: -1.3 },     // Colab - second line start
-                    { x: -4.1, y: -5 },      // SQL - after "precision"
-                    { x: -5.8, y: -1.3 },      // Firebase - after "Firebase"
+                    { x: 8.9, y: 1.1 },   // Figma - after "products"
+                    { x: -7.5, y: 2.5 },    // React - after "React interface"  
+                    { x: -1.9, y: 4.6 },    // Node - after "Node.js backend"
+                    { x: 4.8, y: -1.5 },     // Colab - second line start
+                    { x: -4.6, y: -4.95 },      // SQL - after "precision"
+                    { x: -6.0, y: -1.3 },      // Firebase - after "Firebase"
                 ];
                 heroX = inlinePositions[icon.col].x;
                 heroY = inlinePositions[icon.col].y;
@@ -485,6 +486,24 @@ const Scene = ({ scrollProgress, initialScrollProgress }: SceneProps) => {
         camera.lookAt(0, 0, -1);
     }, [camera]);
 
+    // Adjust FOV to match artboard scale so Three.js world positions stay
+    // visually glued to the 2D artboard elements at any viewport size.
+    //
+    // Correct formula: tan(fov/2) = vh × tan(BASE_FOV/2) / (ARTBOARD_H × scale)
+    //   • Width-constrained  (scale = vw/1440): FOV narrows to zoom in
+    //   • Height-constrained (scale = vh/900) : formula collapses → FOV stays at 75°
+    //     so icons don't drift vertically when only height changes.
+    useEffect(() => {
+        const BASE_FOV = 75;
+        const ARTBOARD_H = 900;
+        const baseTanHalfFov = Math.tan((BASE_FOV * Math.PI) / 360);
+        const newFov = 2 * Math.atan(
+            (window.innerHeight * baseTanHalfFov) / (ARTBOARD_H * artboardScale)
+        ) * (180 / Math.PI);
+        (camera as THREE.PerspectiveCamera).fov = newFov;
+        (camera as THREE.PerspectiveCamera).updateProjectionMatrix();
+    }, [camera, artboardScale]);
+
     return (
         <>
             <ambientLight intensity={0.9} />
@@ -503,9 +522,10 @@ const Scene = ({ scrollProgress, initialScrollProgress }: SceneProps) => {
 
 interface IconSceneProps {
     scrollProgress: number;
+    artboardScale: number;
 }
 
-const IconScene = ({ scrollProgress }: IconSceneProps) => {
+const IconScene = ({ scrollProgress, artboardScale }: IconSceneProps) => {
     const [texturesReady, setTexturesReady] = useState(false);
     const initialScrollRef = useRef(scrollProgress);
     const renderCount = useRef(0);
@@ -543,7 +563,7 @@ const IconScene = ({ scrollProgress }: IconSceneProps) => {
                 }}
             >
                 <Suspense fallback={<SuspenseFallback />}>
-                    <Scene scrollProgress={scrollProgress} initialScrollProgress={initialScrollRef.current} />
+                    <Scene scrollProgress={scrollProgress} initialScrollProgress={initialScrollRef.current} artboardScale={artboardScale} />
                     <Preload all />
                 </Suspense>
             </Canvas>
