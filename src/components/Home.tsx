@@ -11,7 +11,7 @@ import connectButton from '../assets/images/connect_button.png';
 import aalogo from '../assets/images/aalogo.png';
 import gradientBg from '../assets/gradient.png';
 import paper1 from '../assets/images/paper1.jpg';
-import paper2 from '../assets/images/paper2.jpg';
+import paper2 from '../assets/images/paper2.png';
 import githubIcon from '../assets/images/github.png';
 import linkedinIcon from '../assets/images/linkedin.png';
 // Import icon images
@@ -383,7 +383,7 @@ const Home = () => {
                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                         {/* Paper 1 */}
                         <a
-                            href="https://lnkd.in/dHMvTDmv"
+                            href="https://iieta.org/journals/isi/paper/10.18280/isi.300906"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group relative transition-all duration-300 overflow-hidden flex flex-col md:flex-row items-stretch"
@@ -439,7 +439,7 @@ const Home = () => {
 
                         {/* Paper 2 */}
                         <a
-                            href="https://drive.google.com/file/d/1s5L7d9gbU-72n3-ptgIIC2dc-oPo7bk3/view?usp=sharing"
+                            href="https://thegrenze.com/index.php?display=page&view=journalabstract&absid=6705&id=8"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group relative transition-all duration-300 overflow-hidden flex flex-col md:flex-row items-stretch"
