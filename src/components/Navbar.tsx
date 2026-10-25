@@ -18,7 +18,7 @@ const Navbar = ({ activeSection = 'home' }: NavbarProps) => {
     const navItems = [
         { id: 'home', label: 'HOME', href: '/', isRoute: true },
         { id: 'about', label: 'ABOUT', href: '/about', isRoute: true },
-        { id: 'resume', label: 'RESUME', href: 'https://drive.google.com/file/d/1Q1eXtrcNPqF22gotLDQSzMoNxE2nmzNS/view?usp=sharing', isRoute: false },
+        { id: 'resume', label: 'RESUME', href: 'https://drive.google.com/file/d/1NSrq1m1Q5skIBYnTsF082b5GHlDJ7Y01/view?usp=sharing', isRoute: false },
         { id: 'contact', label: 'CONTACT', href: '#contact', isRoute: false },
     ];
 
