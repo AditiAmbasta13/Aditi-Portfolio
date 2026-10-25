@@ -284,6 +284,19 @@ const ProjectsShowcase = () => {
                                     </li>
                                 </ul>
                                 <div className="flex gap-3 justify-center md:justify-start" style={stagger(visible, 7)}>
+                                    <a href="https://github.com/AdityaDubey2005/Devops-Agent" target="_blank" rel="noopener noreferrer" className="relative inline-block group cursor-pointer">
+                                        <img
+                                            src={connectButton}
+                                            alt="Connect"
+                                            className="w-32 h-auto rounded-[17px] shadow-md transition-transform duration-300 group-hover:scale-105"
+                                        />
+                                        <span
+                                            className="absolute inset-0 flex items-center gap-2 justify-center text-gray-700 font-semibold text-sm pointer-events-none"
+                                            style={{ fontFamily: '"Outfit", serif' }}
+                                        >
+                                            <GithubIcon /> GitHub
+                                        </span>
+                                    </a>
                                     <a href="https://docs.google.com/presentation/d/1mylj4cC4Go6BSS6TpfZ2T_FzZENoQ6V0jFc_pcKkGp4/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="relative inline-block group cursor-pointer">
                                         <img
                                             src={connectButton}
